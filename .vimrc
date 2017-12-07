@@ -16,6 +16,7 @@ set ruler
 set laststatus=2
 set paste
 let g:python_recommended_style=0
+set tags=./tags
 
 syntax enable
 set background=dark
