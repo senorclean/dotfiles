@@ -10,23 +10,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -43,6 +29,22 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" for switching to NERDTree console with Ctrl-N
+map <C-n> :NERDTreeFocus<CR>
+
+" vim-airline stuff for the status bar
+let g:airline_theme='solarized'
+" Change airline positions
+function! AirlineInit()
+	let g:airline_section_a = airline#section#create(['mode'])
+	let g:airline_section_b = airline#section#create(['hunks'])
+	let g:airline_section_c = airline#section#create(['%f'])
+	let g:airline_section_x = ''
+  let g:airline_section_y = ''
+  let g:airline_section_warning = ''
+
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 set showmode
 " set cindent
